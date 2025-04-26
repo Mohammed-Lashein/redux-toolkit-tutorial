@@ -1,0 +1,1 @@
+Here I am following redux conventions used [in this project](https://github.com/scandipwa/scandipwa/tree/master/packages/scandipwa)
