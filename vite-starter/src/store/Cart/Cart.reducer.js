@@ -51,6 +51,11 @@ const cartSlice = createSlice({
 			// console.log('after using the reduce HOF');
 			// console.log(state.amount);
 		},
+		calculateTotalPrice: (state) => {
+			let totalPrice = state.cartItems.reduce((acc, item) => acc + item.amount * item.price, 0)
+
+			state.total = totalPrice
+		},
 	},
 })
 console.log("### This is cart slice ###")
@@ -59,4 +64,11 @@ console.log(cartSlice)
 
 export const cartReducer = cartSlice.reducer
 // These are action creators
-export const { clearCart, removeItem, increaseItemQty, decreaseItemQty, calculateTotalItemsCount } = cartSlice.actions
+export const {
+	clearCart,
+	removeItem,
+	increaseItemQty,
+	decreaseItemQty,
+	calculateTotalItemsCount,
+	calculateTotalPrice,
+} = cartSlice.actions
