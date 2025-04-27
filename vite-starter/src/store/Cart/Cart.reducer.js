@@ -9,9 +9,12 @@ const initialState = {
 }
 
 const cartSlice = createSlice({
+  // generated action types will use that name as a prefix 
   name: 'myCart',
   initialState
 })
+console.log('### This is cart slice ###');
+
 console.log(cartSlice);
 
 export const cartReducer = cartSlice.reducer

@@ -2,13 +2,8 @@ import { useSelector } from 'react-redux';
 import { CartIcon } from '../icons';
 
 function Navbar() {
-  console.log(useSelector((store) => {
-    console.log(store.mobilePhonesCart)
-  }
-  ));
-  
   return (
-   <nav>
+  <nav>
     <div className="nav-center">
       <h3>RTK</h3>
       {/* Remember our work on the ecommerce task, not putting the icon in a div
