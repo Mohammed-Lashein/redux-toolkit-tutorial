@@ -2,6 +2,8 @@ import { useSelector } from 'react-redux';
 import { CartIcon } from '../icons';
 
 function Navbar() {
+  const {amount} = useSelector((store) => store.mobilePhonesCart)
+  
   return (
   <nav>
     <div className="nav-center">
@@ -20,7 +22,7 @@ function Navbar() {
         so the items count bubble will always be relative to that container
         */}
         <div className="amount-container">
-          <p className="total-amount">0</p>
+          <p className="total-amount">{amount}</p>
         </div>
       </div>
     </div>
