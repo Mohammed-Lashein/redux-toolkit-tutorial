@@ -6,7 +6,7 @@ import { useEffect } from "react"
 // should be extracted to a utils file, but since our application is small, there is no problem in
 // leaving it here
 function formatPrice(price) {
-	return Number(price).toFixed(2)
+	return price.toFixed(2)
 }
 
 function CartContainer() {
