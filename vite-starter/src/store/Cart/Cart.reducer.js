@@ -52,7 +52,13 @@ const cartSlice = createSlice({
 			// console.log(state.amount);
 		},
 		calculateTotalPrice: (state) => {
-			let totalPrice = state.cartItems.reduce((acc, item) => acc + item.amount * item.price, 0)
+			let totalPrice = state.cartItems.reduce(
+				// prettier-ignore
+				/* The above line is important otherwise prettier will remove the brackets 
+        since there is not mathematical need for them (but I like being explicit about that) */
+				(acc, item) => acc + (item.amount * item.price),
+				0
+			)
 
 			state.total = totalPrice
 		},
