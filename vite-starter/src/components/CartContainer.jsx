@@ -3,7 +3,16 @@ import CartItem from './CartItem'
 
 function CartContainer() {
   // const {cartItems} = useSelector((store) => store.mobilePhonesCart)
-  const {cartItems, total} = useSelector((store) => store.mobilePhonesCart)  
+  const {cartItems, total, amount} = useSelector((store) => store.mobilePhonesCart)  
+
+  if(amount < 1) {
+    return <div className="cart">
+      <header>
+        <h2>your bag</h2>
+        <h4 className='empty-cart'>is currently empty</h4>
+      </header>
+    </div>
+  }
   
   return (
     <div className='cart'>
