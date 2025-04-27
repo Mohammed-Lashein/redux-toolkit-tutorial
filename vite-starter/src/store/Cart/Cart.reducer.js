@@ -1,7 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
+import cartItems from '../../cartItems';
+
 
 const initialState = {
-  cartItems: [],
+  cartItems,
   amount: 0,
   total: 0,
   // for implementing basic suspence on fetching from the api
