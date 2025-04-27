@@ -3,6 +3,12 @@ import CartItem from "./CartItem"
 import { calculateTotalItemsCount, calculateTotalPrice, clearCart } from "../store/Cart/Cart.reducer"
 import { useEffect } from "react"
 
+// should be extracted to a utils file, but since our application is small, there is no problem in
+// leaving it here
+function formatPrice(price) {
+	return Number(price).toFixed(2)
+}
+
 function CartContainer() {
 	const { cartItems, total, amount } = useSelector((store) => store.mobilePhonesCart)
 	const dispatch = useDispatch()
@@ -39,7 +45,7 @@ function CartContainer() {
 				<div className='cart-total'>
 					<h4>
 						<span>Total</span>
-						<span>${total}</span>
+						<span>${formatPrice(total)}</span>
 					</h4>
 				</div>
 				<button
