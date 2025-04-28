@@ -1,6 +1,7 @@
 import { useDispatch } from "react-redux"
 import { clearCart } from "../store/features/Cart/cartSlice"
 import { closeModal } from "../store/features/Modal/modalSlice"
+import { toast } from 'sonner'
 
 function Modal() {
 	const dispatch = useDispatch()
@@ -8,6 +9,7 @@ function Modal() {
 	function handleCartClearance() {
 		dispatch(clearCart())
 		dispatch(closeModal())
+		toast.success("Cart was successfully cleared !")
 	}
 	return (
 		<div className='modal-container'>

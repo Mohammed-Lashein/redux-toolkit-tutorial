@@ -4,11 +4,11 @@ import cartItems from "../../../cartItems"
 const url = "https://www.course-api.com/react-useReducer-cart-project"
 
 const initialState = {
-	cartItems: [],
+	cartItems,
 	amount: 4,
 	total: 0,
 	// for implementing basic suspence on fetching from the api
-	isLoading: true,
+	isLoading: false,
 }
 
 // createAsyncThunk(typePrefix, payloadCreator)

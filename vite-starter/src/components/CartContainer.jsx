@@ -4,6 +4,7 @@ import { calculateTotalItemsCount, calculateTotalPrice, getCartItems } from "../
 import { useEffect } from "react"
 import Modal from "./Modal"
 import { openModal } from "../store/features/Modal/modalSlice"
+import { toast } from 'sonner';
 
 // should be extracted to a utils file, but since our application is small, there is no problem in
 // leaving it here
@@ -23,23 +24,26 @@ function CartContainer() {
 		dispatch(calculateTotalPrice())
 	}, [cartItems])
 
-	useEffect(() => {
-		dispatch(getCartItems())
-	}, [])
+	// useEffect(() => {
+	// 	dispatch(getCartItems())
+	// }, [])
 
 	if (isLoading) {
 		return <div className='loading'>Loading</div>
 	}
 
-	if (amount < 1) {
-		return (
-			<div className='cart'>
-				<header>
-					<h2>your bag</h2>
-					<h4 className='empty-cart'>is currently empty</h4>
-				</header>
-			</div>
-		)
+	if(!isLoading) {
+		if (amount < 1) {
+			console.log(true)
+			return (
+				<div className='cart'>
+					<header>
+						<h2>your bag</h2>
+						<h4 className='empty-cart'>is currently empty</h4>
+					</header>
+				</div>
+			)
+		}
 	}
 
 	return (

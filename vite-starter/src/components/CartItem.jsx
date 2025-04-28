@@ -1,6 +1,7 @@
 import { useDispatch } from "react-redux"
 import { ChevronDown, ChevronUp } from "../icons"
 import { decreaseItemQty, increaseItemQty, removeItem } from "../store/features/Cart/cartSlice"
+import { toast } from 'sonner'
 
 function CartItem({ title, price, img, amount, id }) {
 	const dispatch = useDispatch()
@@ -15,7 +16,10 @@ function CartItem({ title, price, img, amount, id }) {
 				<p className='item-price'>${price}</p>
 				<button
 					className='remove-btn'
-					onClick={() => dispatch(removeItem(id))}
+					onClick={() => {
+						dispatch(removeItem(id))
+						toast.success("Item has been removed from cart !")
+					}}
 				>
 					remove
 				</button>
