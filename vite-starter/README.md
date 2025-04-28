@@ -1,8 +1,5 @@
 # Course notes
 
-Here I am following redux conventions used [in this project](https://github.com/scandipwa/scandipwa/tree/master/packages/scandipwa)
-
-### Notes
 #### Redux selectors notes
 
 **What is a selector ?**  
@@ -36,3 +33,11 @@ ___
 So lifecycle actions are accessed within the `extraReducers` nested object, however I don't know from where are these properties like (pending, rejected, ...) are coming from . 
 
 From the docs : `extraReducers` allows `createSlice` to respond and update its own state in response to other action types besides the types it has generated . 
+
+
+**Some notes regarding `getCartItems`** :   
+- It is an action creator returned by the `createAsyncThunk()`
+- It has some properties attached to it since that **functions are objects in js (I totally forgot that)**
+- Each attached property to the `getCartItems` action creator has a plain action creator stored in it (In simple terms : `getCartItems.pending` has a value of an action creator function) 
+
+You can [check more information about thunks from the docs](https://redux-toolkit.js.org/api/createAsyncThunk)
