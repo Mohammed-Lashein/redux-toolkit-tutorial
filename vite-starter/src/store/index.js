@@ -1,5 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { cartReducer } from './Cart/Cart.reducer';
+import { modalReducer } from './Modal/Modal.reducer';
 // import "./Cart/Cart.reducer"
 
 export const store = configureStore({
@@ -9,6 +10,7 @@ export const store = configureStore({
     object that will hold the data coming from 
     our reducer
     */
-    mobilePhonesCart: cartReducer
+    mobilePhonesCart: cartReducer,
+    modalVisibility: modalReducer
   }
 })
