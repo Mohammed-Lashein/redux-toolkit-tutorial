@@ -2,8 +2,8 @@ import { useDispatch, useSelector } from "react-redux"
 import CartItem from "./CartItem"
 import { calculateTotalItemsCount, calculateTotalPrice, clearCart } from "../store/Cart/Cart.reducer"
 import { useEffect } from "react"
-import Modal from './Modal'
-import { openModal } from '../store/Modal/Modal.reducer'
+import Modal from "./Modal"
+import { openModal } from "../store/Modal/Modal.reducer"
 
 // should be extracted to a utils file, but since our application is small, there is no problem in
 // leaving it here
@@ -12,21 +12,21 @@ function formatPrice(price) {
 }
 
 function CartContainer() {
-  // selectors 
+	// selectors
 	const { cartItems, total, amount } = useSelector((store) => store.mobilePhonesCart)
-  const {isModalOpened} = useSelector((store) => store.modalVisibility)
-	const dispatch = useDispatch()  
+	const { isModalOpened } = useSelector((store) => store.modalVisibility)
+	const dispatch = useDispatch()
 
-  // calculate total price and items count
+	// calculate total price and items count
 	useEffect(() => {
 		dispatch(calculateTotalItemsCount())
 		dispatch(calculateTotalPrice())
 	}, [cartItems])
 
-  function handleCartClearance() {
-    dispatch(clearCart())
-    dispatch(openModal())
-  }
+	function handleCartClearance() {
+		// dispatch(clearCart())
+		dispatch(openModal())
+	}
 
 	if (amount < 1) {
 		return (
@@ -65,7 +65,7 @@ function CartContainer() {
 					clear cart
 				</button>
 			</footer>
-      {isModalOpened && <Modal />}
+			{isModalOpened && <Modal />}
 		</div>
 	)
 }
