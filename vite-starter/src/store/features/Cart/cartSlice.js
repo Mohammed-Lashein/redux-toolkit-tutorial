@@ -25,7 +25,7 @@ export const getCartItems = createAsyncThunk("banana", () => {
 	=> That function returns an action creator . 
 	And that action creator returns a dispatch function (the way we return action objects through async code)
 */
-console.log(getCartItems)
+// console.log(getCartItems)
 // console.log(getCartItems.prototype); // {}
 // console.log(Object.keys(getCartItems));
 // [
@@ -43,11 +43,9 @@ const cartSlice = createSlice({
 	initialState,
 	reducers: {
 		clearCart: (store) => {
-			console.log("### Cart was cleared ! ###")
 			// We can mutate the state directly because behind the scenes immer takes
 			// care of returning a new copy of the state
 			store.cartItems = []
-			console.log(store.cartItems)
 		},
 		removeItem: (store, { payload }) => {
 			const cartItems = store.cartItems.filter((item) => item.id !== payload)
@@ -93,7 +91,6 @@ const cartSlice = createSlice({
 				state.isLoading = true
 			})
 			.addCase(getCartItems.fulfilled, (state, action) => {
-				console.log(action)
 				state.cartItems = action.payload
 				state.isLoading = false
 			})
@@ -102,9 +99,6 @@ const cartSlice = createSlice({
 			})
 	},
 })
-console.log("### This is cart slice ###")
-
-console.log(cartSlice)
 
 export const cartReducer = cartSlice.reducer
 // These are action creators
