@@ -23,11 +23,6 @@ function CartContainer() {
 		dispatch(calculateTotalPrice())
 	}, [cartItems])
 
-	function handleCartClearance() {
-		// dispatch(clearCart())
-		dispatch(openModal())
-	}
-
 	if (amount < 1) {
 		return (
 			<div className='cart'>
@@ -60,7 +55,7 @@ function CartContainer() {
 				</div>
 				<button
 					className='btn clear-btn'
-					onClick={() => handleCartClearance()}
+					onClick={() => dispatch(openModal())}
 				>
 					clear cart
 				</button>
