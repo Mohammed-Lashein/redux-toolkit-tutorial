@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux"
-import { clearCart } from "../store/Cart/Cart.reducer"
-import { closeModal } from "../store/Modal/Modal.reducer"
+import { clearCart } from "../store/features/Cart/cartSlice"
+import { closeModal } from "../store/features/Modal/modalSlice"
 
 function Modal() {
 	const dispatch = useDispatch()

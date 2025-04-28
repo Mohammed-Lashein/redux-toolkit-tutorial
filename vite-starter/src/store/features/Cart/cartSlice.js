@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit"
-import cartItems from "../../cartItems"
+import cartItems from "../../../cartItems"
 
 const initialState = {
 	cartItems,
@@ -32,9 +32,6 @@ const cartSlice = createSlice({
 		},
 		decreaseItemQty: (store, { payload }) => {
 			const item = store.cartItems.find((item) => item.id === payload)
-			console.log(item)
-			console.log(payload)
-			console.log(item.amount)
 
 			if (item.amount <= 1) {
 				/* The below code won't work simply because you can't call a reducer within another one . 

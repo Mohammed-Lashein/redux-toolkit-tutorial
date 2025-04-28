@@ -28,4 +28,11 @@ Regarding the params :
 I generally tend to prefer the manual approach of creating the action types, but let's see what RTK has to provide us . 
 
 - **initialState :** The initial state that the reducer will return whenever supplied with `undefined` as an argument . 
+___
 
+### Thunk notes
+- We should return a promise from the cb passed to `createAsyncThunk`
+- The var that we stored the return result from `createAsyncThunk` supports *lifecycle actions* (as the states of any promise)
+So lifecycle actions are accessed within the `extraReducers` nested object, however I don't know from where are these properties like (pending, rejected, ...) are coming from . 
+
+From the docs : `extraReducers` allows `createSlice` to respond and update its own state in response to other action types besides the types it has generated . 

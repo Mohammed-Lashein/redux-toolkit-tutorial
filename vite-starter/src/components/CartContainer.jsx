@@ -1,9 +1,9 @@
 import { useDispatch, useSelector } from "react-redux"
 import CartItem from "./CartItem"
-import { calculateTotalItemsCount, calculateTotalPrice, clearCart } from "../store/Cart/Cart.reducer"
+import { calculateTotalItemsCount, calculateTotalPrice, clearCart } from "../store/features/Cart/cartSlice"
 import { useEffect } from "react"
 import Modal from "./Modal"
-import { openModal } from "../store/Modal/Modal.reducer"
+import { openModal } from "../store/features/Modal/modalSlice"
 
 // should be extracted to a utils file, but since our application is small, there is no problem in
 // leaving it here
