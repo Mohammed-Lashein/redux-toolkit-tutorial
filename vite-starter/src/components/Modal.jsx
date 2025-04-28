@@ -4,6 +4,11 @@ import { closeModal } from "../store/Modal/Modal.reducer"
 
 function Modal() {
 	const dispatch = useDispatch()
+
+	function handleCartClearance() {
+		dispatch(clearCart())
+		dispatch(closeModal())
+	}
 	return (
 		<div className='modal-container'>
 			<div className='modal'>
@@ -12,7 +17,7 @@ function Modal() {
 					{/* I swapped the styles because confirming deletion is supposed to be the danger action not the cancel */}
 					<button
 						className='btn clear-btn'
-						onClick={() => dispatch(clearCart())}
+						onClick={() => handleCartClearance()}
 					>
 						confirm
 					</button>
