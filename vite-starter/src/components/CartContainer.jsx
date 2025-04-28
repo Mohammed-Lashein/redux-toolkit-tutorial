@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux"
 import CartItem from "./CartItem"
-import { calculateTotalItemsCount, calculateTotalPrice, clearCart } from "../store/features/Cart/cartSlice"
+import { calculateTotalItemsCount, calculateTotalPrice, getCartItems } from "../store/features/Cart/cartSlice"
 import { useEffect } from "react"
 import Modal from "./Modal"
 import { openModal } from "../store/features/Modal/modalSlice"
@@ -13,7 +13,7 @@ function formatPrice(price) {
 
 function CartContainer() {
 	// selectors
-	const { cartItems, total, amount } = useSelector((store) => store.mobilePhonesCart)
+	const { cartItems, total, amount, isLoading } = useSelector((store) => store.mobilePhonesCart)
 	const { isModalOpen } = useSelector((store) => store.modalVisibility)
 	const dispatch = useDispatch()
 
@@ -22,6 +22,14 @@ function CartContainer() {
 		dispatch(calculateTotalItemsCount())
 		dispatch(calculateTotalPrice())
 	}, [cartItems])
+
+	useEffect(() => {
+		dispatch(getCartItems())
+	}, [])
+
+	if (isLoading) {
+		return <div className='loading'>Loading</div>
+	}
 
 	if (amount < 1) {
 		return (

@@ -1,30 +1,31 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit"
 import cartItems from "../../../cartItems"
 
-const url = 'https://www.course-api.com/react-useReducer-cart-project'
+const url = "https://www.course-api.com/react-useReducer-cart-project"
 
 const initialState = {
-	cartItems,
+	cartItems: [],
 	amount: 4,
 	total: 0,
 	// for implementing basic suspence on fetching from the api
-	isLoading: false,
+	isLoading: true,
 }
 
 // createAsyncThunk(typePrefix, payloadCreator)
-export const getCartItems = createAsyncThunk('banana', () => {
-	return fetch(url)
-		.then((res) => res.json())
-		.then((res) => console.log(res))
-		.catch((err)=> console.log(err)
-		)
+export const getCartItems = createAsyncThunk("banana", () => {
+	return (
+		fetch(url)
+			.then((res) => res.json())
+			// .then((res) => console.log(res))
+			.catch((err) => console.log(err))
+	)
 })
 /* 
 	What does the return value from createAsyncThunk() do ?
 	=> That function returns an action creator . 
 	And that action creator returns a dispatch function (the way we return action objects through async code)
 */
-console.log(getCartItems);
+console.log(getCartItems)
 // console.log(getCartItems.prototype); // {}
 // console.log(Object.keys(getCartItems));
 // [
@@ -34,8 +35,6 @@ console.log(getCartItems);
 // 	"typePrefix"
 // ]
 // console.log(typeof getCartItems); // function
-
-
 
 const cartSlice = createSlice({
 	// generated action types will use that name as a prefix
@@ -86,6 +85,19 @@ const cartSlice = createSlice({
 			)
 
 			state.total = totalPrice
+		},
+	},
+	extraReducers: {
+		[getCartItems.pending]: (state) => {
+			state.isLoading = true
+		},
+		[getCartItems.fulfilled]: (state, action) => {
+			console.log(action)
+			state.isLoading = false
+			state.cartItems = action.payload
+		},
+		[getCartItems.pending]: (state) => {
+			state.isLoading = false
 		},
 	},
 })
