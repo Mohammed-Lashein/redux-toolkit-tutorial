@@ -14,7 +14,7 @@ function formatPrice(price) {
 function CartContainer() {
 	// selectors
 	const { cartItems, total, amount } = useSelector((store) => store.mobilePhonesCart)
-	const { isModalOpened } = useSelector((store) => store.modalVisibility)
+	const { isModalOpen } = useSelector((store) => store.modalVisibility)
 	const dispatch = useDispatch()
 
 	// calculate total price and items count
@@ -65,7 +65,7 @@ function CartContainer() {
 					clear cart
 				</button>
 			</footer>
-			{isModalOpened && <Modal />}
+			{isModalOpen && <Modal />}
 		</div>
 	)
 }
